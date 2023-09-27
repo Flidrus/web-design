@@ -1,1 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
 
+<head>
+    <title>Coffee Shop Survey</title>
+</head>
+
+<body style="font-family: Arial;">
+    <h1 style="background-color: brown; color: white;">Coffee Survey</h1>
+    <form action="submit.php" method="post">
+        <fieldset>
+            <legend style="color: brown;">About You</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email"><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age"><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend style="color: brown;">Questions</legend>
+            <p>What type of coffee do you prefer?</p>
+            <input type="radio" id="espresso" name="coffee" value="Espresso">
+            <label for="espresso">Espresso</label><br>
+
+            <input type="radio" id="latte" name="coffee" value="Latte">
+            <label for="latte">Latte</label><br>
+
+            <input type="radio" id="americano" name="coffee" value="Americano">
+            <label for="americano">Americano</label><br><br>
+
+            <p>How often do you visit?</p>
+            <select id="frequency">
+                <option>Daily</option>
+                <option>Weekly</option>
+                <option>Monthly</option>
+            </select><br><br>
+
+            <p>Any other comments:</p>
+            <textarea cols="30" rows="5"></textarea><br><br>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
