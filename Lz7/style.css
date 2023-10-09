@@ -1,1 +1,97 @@
+﻿:root {
+    --text: #080303;
+    --background: #f5f5f5;
+    --primary: #ca2b2b;
+    --secondary: #ededed;
+    --accent: #8e97e7;
+}
 
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+    margin: 0;
+}
+
+.header {
+    background-color: var(--primary);
+    color: var(--background);
+    text-align: center;
+    padding: 20px;
+}
+
+.border {
+    border: 2px solid var(--primary);
+}
+
+.bigger-text {
+    font-size: 20px;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+.section {
+    background-color: var(--secondary);
+    padding: 20px;
+    margin: 20px;
+    color: var(--text);
+}
+
+hr {
+    border: 1px solid var(--secondary);
+    margin: 0;
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+nav {
+    text-align: center;
+    background-color: var(--secondary);
+    padding: 10px;
+}
+
+footer {
+    background-color: var(--secondary);
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    background-color: var(--accent);
+    padding: 10px;
+}
+
+.light-text {
+    color: var(--background);
+}
+
+.dark-text {
+    color: var(--text);
+}
+
+.button {
+    background-color: var(--text);
+    color: var(--background);
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 900;
+    border: none;
+}
+
+.button:hover {
+    background-color: var(--background);
+}
+
+::selection {
+    background-color: var(--primary);
+    color: var(--background);
+}
