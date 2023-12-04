@@ -1,83 +1,39 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Semen Gomelskiy</title>
-    <style>
+using System;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
-        :root {
-            --text: #080303;
-            --background: #f5f5f5;
-            --primary: #ca2b2b;
-            --secondary: #ededed;
-            --accent: #8e97e7;
+namespace lab2._1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            byte[] inputData = File.ReadAllBytes("C:/Users/gomel/Documents/МК2_схемотех_питання 2023.pdf").ToArray();
+            byte[] encryptMes = new byte[inputData.Length];
+            var rndNumberGenerator = new RNGCryptoServiceProvider();
+            var key = new byte[inputData.Length];
+            rndNumberGenerator.GetBytes(key);
+            for (int i = 0; i < inputData.Length; i++)
+            {
+                encryptMes[i] = (byte)(inputData[i] ^ key[i]);
+            }
+            File.WriteAllBytes("C:/Users/gomel/Downloads/МК2_схемотех_питання 2023.dat", encryptMes);
+            Console.WriteLine("encrypted");
+            decrypt(key);
+        }
+        static void decrypt(byte[] key)
+        {
+            byte[] encryptMes = File.ReadAllBytes("C:/Users/gomel/Downloads/МК2_схемотех_питання 2023.dat").ToArray();
+            byte[] outputData = new byte[encryptMes.Length];
+            for (int i = 0; i < encryptMes.Length; i++)
+            {
+                outputData[i] = (byte)(encryptMes[i] ^ key[i]);
+            }
+            string decrypted = Encoding.UTF8.GetString(outputData);
+            System.Console.WriteLine(decrypted);
         }
 
-
-        body {
-            background-color: var(--background);
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            margin: 0;
-            color: var(--text);
-        }
-
-        header {
-            margin: 0;
-            padding: 10px 10px;
-            text-align: center;
-            font-size: 1.5vw;
-            background-color: var(--secondary);
-        }
-
-        h1 {
-            color: var(--primary);
-        }
-
-        nav {
-            text-align: center;
-            background-color: var(--secondary);
-            padding: 10px 10px;
-        }
-
-        section {
-            background-color: var(--secondary);
-            padding: 10px;
-            margin: 20px;
-            color: var(--text);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Semen Gomelskiy</h1>
-        <h3>Summary</h3>
-    </header>
-    <nav>
-        <a href="https://instagram.com/semengomelskiy">Instagram</a> |
-        <a href="https://github.com/Flidrus>GitHub</a> |
-        <a href="https://t.me/@GomelskiySemen2005">Telegram</a>
-    </nav>
-    <div>
-        <section>
-            <h2>I love chatting on Telegram</h2>
-            <p><b>Name</b>Semen Gomelskiy</p>
-            <p><b>Years:</b>18 years old</p>
-            <p><b>Location:</b>Mariupol</p>
-        </section>
-        <section>
-            <h2>Hobbies:</h2>
-            <ul>
-                <li>World of Tanks</li>
-                <li>Sport</li>
-                <li>Travelling</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Information:</h2>
-            <p><b>Email:</b> gomelskiy2005@email.com</p>
-            <img src="gitcat.png" alt="git logo" height="100" width="100" />
-            </a>
-            </section>
-    </div>
-</body>
-
-</html>
+    }
+}
